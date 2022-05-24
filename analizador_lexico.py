@@ -163,7 +163,8 @@ def t_IDENTIFICADOR(t):
     return t
 
 def t_CADENA(t):
-   r'\"?(\w+ \ *\w*\d* \ *)\"?'
+#    r'\"?(\w+ \ *\w*\d* \ *)\"?'
+   r' \"((\w*)(\s*)([\.,])*(\?*)(\!*)(\:)*)*\" '
    return t
 
 def t_NUMERAL(t):
@@ -215,8 +216,8 @@ t_ignore =' \t'
 
 def t_error( t):
     global resultado_lexema
-    estado = "** Token no valido en la Linea {:4} Valor {:16} Posicion {:4}".format(str(t.lineno), str(t.value),
-                                                                      str(t.lexpos))
+    estado = "** Token no valido en la Linea {:4} Valor {:16} Posicion {:4}".format(str(t.lineno), str(t.value), str(t.lexpos))
+    # estado = f"** Token no valido en la Linea {str(t.lineno)} Valor {str(t.value)} Posicion {str(t.lexpos)}"
     resultado_lexema.append(estado)
     t.lexer.skip(1)
 
@@ -234,6 +235,7 @@ def prueba(data):
             break
         # print("lexema de "+tok.type+" valor "+tok.value+" linea "tok.lineno)
         estado = "Linea {:4} Tipo {:16} Valor {:16} Posicion {:4}".format(str(tok.lineno),str(tok.type) ,str(tok.value), str(tok.lexpos) )
+        # estado = f"Linea {str(tok.lineno)} Tipo {str(tok.type)} Valor {str(tok.value)} Posicion {str(tok.lexpos)}"
         resultado_lexema.append(estado)
     return resultado_lexema
 
