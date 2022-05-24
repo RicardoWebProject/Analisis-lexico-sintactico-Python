@@ -26,7 +26,7 @@ class Main(QMainWindow):
         self.home.bt_limpiar.clicked.connect(self.ev_limpiar)
 
         #Desarrollandores
-        self.home.estado.showMessage("Desarrollando por Maryon Torres y Michael Abril")
+        self.home.estado.showMessage("Desarrollado por Sara Ramírez y Marjorie Rivera")
 
     def ev_lexico(self):
         '''
