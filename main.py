@@ -6,7 +6,7 @@ from PyQt5.uic.properties import QtGui
 """ Importamos todas nuetras Ventana y funciones utiles"""
 from vista.home import  *
 from analizador_lexico import *
-from analizador_sintactico import *
+# from analizador_sintactico import *
 
 class Main(QMainWindow):
     """ Clase principal de nuestra app"""
@@ -20,13 +20,12 @@ class Main(QMainWindow):
 
         # Eventos
         self.home.bt_lexico.clicked.connect(self.ev_lexico)
-        self.home.bt_sintactico.clicked.connect(self.ev_sintactico)
 
         self.home.bt_archivo.clicked.connect(self.ev_archivo)
         self.home.bt_limpiar.clicked.connect(self.ev_limpiar)
 
         #Desarrollandores
-        self.home.estado.showMessage("Desarrollado por Sara Ramírez y Marjorie Rivera")
+        # self.home.estado.showMessage("Desarrollado por Sara Ramírez y Marjorie Rivera")
 
     def ev_lexico(self):
         '''
@@ -49,29 +48,6 @@ class Main(QMainWindow):
         for lex in resultado_lexico:
             cadena += lex + "\n"
         self.home.tx_lexico.setText(cadena)
-
-
-    def ev_sintactico(self):
-        '''
-        Manejo de analisis gramatico
-        :return: 
-        '''
-        # print("sintactico")
-
-        # limpiamos el campo
-        self.home.tx_sintactico.setText('')
-        #Obtenemos los datos ingresados
-        datos = self.home.tx_ingreso.toPlainText().strip()
-
-        #analizamos la gramatica de los datos ingresados
-        resultado_sintactico = prueba_sintactica(datos)
-        cadena = ''
-
-        #Armanos la cadena a mostrar
-        for item in resultado_sintactico:
-            cadena += item + "\n"
-        # mostramos en pantalla
-        self.home.tx_sintactico.setText( cadena )
 
     def ev_archivo(self):
         '''
@@ -97,8 +73,6 @@ class Main(QMainWindow):
         self.home.tx_ingreso.setText('')
         self.home.tx_lexico.setText('')
         self.home.tx_sintactico.setText('')
-
-
 
 
 def iniciar():
